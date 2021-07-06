@@ -16,13 +16,14 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ProductType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, ['label' => 'Nom Du Produit', 'attr' => ['placeholder' => 'Tapez le nom du produit']])
+            ->add('name', TextType::class, ['label' => 'Nom Du Produit', 'attr' => ['placeholder' => 'Tapez le nom du produit'], 'required' => false])
             ->add('shortDescription', TextareaType::class, ['label' => 'Description Du Produit', 'attr' => ['placeholder' => 'Donner une courte description mais parlante pour le visiteur']])
             ->add('price', MoneyType::class, ['label' => 'Prix Du Produit', 'attr' => ['placeholder' => 'Le prix du produit en €'], 'divisor' => 100])
             ->add('mainPicture', UrlType::class, [
