@@ -13,7 +13,7 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, ['label' => 'Nom De La Categorie', 'attr' => ['placeholder' => 'Tapez le nom de la Categorie']]);
+            ->add('name', TextType::class, ['label' => 'Nom De La Categorie', 'attr' => ['placeholder' => 'Tapez le nom de la Categorie'], 'required' => false]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
