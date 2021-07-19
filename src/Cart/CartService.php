@@ -25,6 +25,12 @@ class CartService
     {
         $this->session->set('cart', $cart);
     }
+
+    public function empty()
+    {
+        $this->saveCart([]);
+    }
+
     public function add(int $id)
     {
         // 1. S'il existe retrouver le pannier (sous forme de tableau)
@@ -71,6 +77,9 @@ class CartService
         $this->saveCart($cart);
     }
 
+    /**
+     * @return CartItem[]
+     */
     public function getDetailedCartItems(): array
     {
         $detailedCart = [];

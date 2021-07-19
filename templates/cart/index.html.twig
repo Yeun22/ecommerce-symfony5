@@ -38,14 +38,31 @@
 								Supprimer</a>
 						</td>
 					</tr>
-				</tbody>
+				{% endfor %}
 			</tbody>
-		</tr>
-	{% endfor %}
-</tbody>
-<tfoot>
-	<tr>
-		<td colspan="3">Total :</td>
-		<td colspan="2">{{total}}</td>
-	</tr>
-</tfoot></table>{% else %}<div class="alert alert-warning">Votre Panier est vide</hdiv>{% endif %}{% endblock %}
+			<tfoot>
+				<tr>
+					<td colspan="3">Total :</td>
+					<td colspan="2">{{total}}</td>
+				</tr>
+			</tfoot>
+		</table>
+		<hr>
+		{% if app.user %}
+			<h2>Confirmer votre commande en remplissant ce formulaire</h2>
+			{{ form_start(confirmationForm, {'action':path('purchase_confirm')}) }}
+			{{ form_widget(confirmationForm) }}
+			<button class="btn btn-success">Je confirme</button>
+			{{ form_end(confirmationForm) }}
+		{% else %}
+			<h2>Vous devez être connecté pour confirmer cette commande
+			</h2>
+			<a href=" {{ path('security_login') }}" class="btn success">Connexion</a>
+			ou
+			<a href="#">inscrivez-vous</a>
+		{% endif %}
+
+	{% else %}
+		<div class="alert alert-warning">Votre Panier est vide</hdiv>
+	{% endif %}
+{% endblock %}
