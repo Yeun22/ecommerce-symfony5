@@ -73,6 +73,9 @@ class PurchaseItem
     public function setPurchase(?Purchase $purchase): self
     {
         $this->purchase = $purchase;
+        if (!$purchase->getPurchaseItems()->contains($this)) {
+            $purchase->addPurchaseItem($this);
+        }
 
         return $this;
     }

@@ -27,9 +27,7 @@ class PurchasePersister
     {
 
         //6 Nous allons la lié à l'user
-        $purchase->setUser($this->security->getUser())
-            ->setPurchasedAt(new DateTime())
-            ->setTotal($this->cartService->getTotal());
+        $purchase->setUser($this->security->getUser());
         $this->em->persist($purchase);
 
         //7 Lier avec les produits 
