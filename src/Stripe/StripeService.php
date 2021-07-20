@@ -11,7 +11,6 @@ class StripeService
 
     public function __construct(string $secretKey, string $publicKey)
     {
-        dd($secretKey, $publicKey);
         $this->secretKey = $secretKey;
         $this->publicKey = $publicKey;
     }
